@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 mazur.me. All rights reserved.
 //
 
-static CGFloat maxDistance = 10.0;
-static CGFloat indicatorRadius = 10.0;
+static CGFloat maxDistance = 30.0;
+static CGFloat indicatorRadius = 20.0;
 
 #import "ShapeView.h"
 
