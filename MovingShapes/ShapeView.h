@@ -13,13 +13,17 @@
 @protocol ShapeViewDelegate <NSObject>
 
 @optional
+- (void)shapeViewDidMoveVertex: (NSInteger) vertex toPoint: (HKPoint *) point;
 - (void)shapeViewDidTouchWithOnePoint:(HKPoint*) point;
 - (void)shapeViewDidTouchWithTwoPoints:(NSArray *)points;
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points;
 
 @end
 
-@interface ShapeView : UIView
+@interface ShapeView : UIView {
+  NSInteger fingers;
+  NSInteger vertex;
+}
 
 @property (assign, nonatomic) id <ShapeViewDelegate> delegate;
 @property (assign, nonatomic) Triangle *triangle;

@@ -21,6 +21,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)shapeViewDidMoveVertex: (NSInteger) vertex toPoint: (HKPoint *) point {
+  NSLog(@"moved point %d: %@", vertex, point);
+  NSMutableArray *points = [NSMutableArray arrayWithArray: [triangle points]];
+  [points replaceObjectAtIndex: vertex withObject: point];
+  [triangle updatePoints: points];
+  [self.view setNeedsDisplay];
+}
+
 - (void)shapeViewDidTouchWithOnePoint:(HKPoint *)point {
   NSLog(@"1 point: %@", point);
 }
