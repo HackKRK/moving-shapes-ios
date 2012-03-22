@@ -10,6 +10,9 @@
 #import "Shape.h"
 #import "ShapeView.h"
 #import "Gyroscopic.h"
+#import <CoreMotion/CoreMotion.h>
+
+CGFloat gyroSpeed = 1.0;
 
 // from http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
 char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y, 
@@ -110,8 +113,11 @@ char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y,
     [self updateShapeWithPoints:points];
 }
 
-- (void)gyroscopicDidUpdateRotation:(float)rotation {
-    NSLog(@"rotation %f", rotation);
+- (void) gyroscopicPositionChangedToX:(CGFloat)x y:(CGFloat)y {
+    [self shapeViewDidMoveByX: -x * gyroSpeed y: y * gyroSpeed];
+//    NSLog(@"rotation %f", rotation);
+    
+    
 //    self.view.transform = CGAffineTransformMakeRotation(rotation);
     //		self.image.transform = CGAffineTransformMakeRotation(rotation);
 }

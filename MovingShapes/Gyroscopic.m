@@ -19,6 +19,8 @@
     self = [super init];
     if (self) {
         self.motionManager = [[CMMotionManager alloc] init];
+        x = 0;
+        y = 0;
     }
     return self;
 }
@@ -37,15 +39,21 @@
 }
 
 - (void)doGyroUpdate {
-	float rate = self.motionManager.gyroData.rotationRate.z;
-	if (fabs(rate) > .2) {
-		float direction = rate > 0 ? 1 : -1;
-		self.rotation += direction * M_PI/90.0;
+    float changeX = self.motionManager.gyroData.rotationRate.x;
+    float changeY = self.motionManager.gyroData.rotationRate.y;
+    x += changeX;
+    y += changeY;
+    NSLog(@"%f %f", x, y);
+    [self.delegate gyroscopicPositionChangedToX: x y: y];
+//	float rate = self.motionManager.gyroData.rotationRate.z;
+//	if (fabs(rate) > .2) {
+//		float direction = rate > 0 ? 1 : -1;
+//		self.rotation += direction * M_PI/90.0;
         
-        [self.delegate gyroscopicDidUpdateRotation:self.rotation];
+//        [self.delegate gyroscopicDidUpdateRotation:self.motionManager.gyroData.rotationRate];
         
 //		self.image.transform = CGAffineTransformMakeRotation(rotation);
-	}
+//	}
 }
 
 @end

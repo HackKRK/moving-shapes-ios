@@ -11,11 +11,13 @@
 
 @protocol GyroscopicDelegate <NSObject>
 
-- (void)gyroscopicDidUpdateRotation:(float)rotation;
+- (void)gyroscopicPositionChangedToX:(CGFloat) x y:(CGFloat)y;
 
 @end
 
-@interface Gyroscopic : NSObject
+@interface Gyroscopic : NSObject {
+    CGFloat x, y;
+}
 
 @property (assign, nonatomic) id <GyroscopicDelegate> delegate;
 
