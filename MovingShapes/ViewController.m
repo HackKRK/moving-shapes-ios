@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Triangle.h"
+#import "Shape.h"
 #import "ShapeView.h"
 #import "Gyroscopic.h"
 
@@ -23,9 +23,9 @@
 
 - (void)shapeViewDidMoveVertex: (NSInteger) vertex toPoint: (HKPoint *) point {
   NSLog(@"moved point %d: %@", vertex, point);
-  NSMutableArray *points = [NSMutableArray arrayWithArray: [triangle points]];
+  NSMutableArray *points = [NSMutableArray arrayWithArray: [shape points]];
   [points replaceObjectAtIndex: vertex withObject: point];
-  [triangle updatePoints: points];
+  [shape updatePoints: points];
   [self.view setNeedsDisplay];
 }
 
@@ -35,23 +35,23 @@
 
 - (void)shapeViewDidMoveByX: (CGFloat) x y: (CGFloat) y {
   NSLog(@"moved by: %f %f", x, y);
-  NSMutableArray *points = [NSMutableArray arrayWithCapacity: [[triangle points] count]];
-  for (HKPoint *point in [triangle points]) {
+  NSMutableArray *points = [NSMutableArray arrayWithCapacity: [[shape points] count]];
+  for (HKPoint *point in [shape points]) {
     HKPoint *modified = [[HKPoint alloc] initWithCGPoint: CGPointMake(point.x + x, point.y + y)];
     [points addObject: modified];
   }
-  [triangle updatePoints: points];
+  [shape updatePoints: points];
   [self.view setNeedsDisplay];
 }
 
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points {
     NSLog(@"3 points: %@", points);
 
-  if (triangle) {
-    [triangle updatePoints: points];
+  if (shape) {
+    [shape updatePoints: points];
   } else {
-    triangle = [[Triangle alloc] initWithPoints: points];
-    [(ShapeView *) self.view setTriangle: triangle];
+    shape = [[Shape alloc] initWithPoints: points];
+    [(ShapeView *) self.view setShape: shape];
   }
 
   [self.view setNeedsDisplay];

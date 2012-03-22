@@ -13,7 +13,7 @@ static CGFloat indicatorRadius = 20.0;
 
 @implementation ShapeView
 
-@synthesize delegate, triangle;
+@synthesize delegate, shape;
 
 - (void) awakeFromNib {
   vertex = -1;
@@ -36,9 +36,9 @@ static CGFloat indicatorRadius = 20.0;
           (trailingPoint.y - pointOnPolygon.y) + pointOnPolygon.x);
 }
 
-- (BOOL) isPointWithinTriangle: (HKPoint *) point {
+- (BOOL) isPointWithinShape: (HKPoint *) point {
   // shamelessly stolen from http://jakescruggs.blogspot.com/2009/07/point-inside-polygon-in-ruby.html
-  NSArray *points = [triangle points];
+  NSArray *points = [shape points];
   BOOL contains = false;
   NSInteger i = -1;
   NSInteger j = points.count - 1;
@@ -94,11 +94,11 @@ static CGFloat indicatorRadius = 20.0;
   fingers = [touches count];
   vertex = -1;
 
-  if (triangle) {
+  if (shape) {
     if (fingers == 1) {
       CGPoint touch = [[touches objectAtIndex: 0] locationInView: self];
-      for (NSInteger i = 0; i < [[triangle points] count]; i++) {
-        HKPoint *point = [[triangle points] objectAtIndex: i];
+      for (NSInteger i = 0; i < [[shape points] count]; i++) {
+        HKPoint *point = [[shape points] objectAtIndex: i];
         if (pow(point.x - touch.x, 2) + pow(point.y - touch.y, 2) < pow(maxDistance, 2)) {
           vertex = i;
           break;
@@ -107,7 +107,7 @@ static CGFloat indicatorRadius = 20.0;
     } else if (fingers == 2) {
       HKPoint *point1 = [[HKPoint alloc] initWithCGPoint: [[touches objectAtIndex: 0] locationInView: self]];
       HKPoint *point2 = [[HKPoint alloc] initWithCGPoint: [[touches objectAtIndex: 0] locationInView: self]];
-      if ([self isPointWithinTriangle: point1] && [self isPointWithinTriangle: point2]) {
+      if ([self isPointWithinShape: point1] && [self isPointWithinShape: point2]) {
         startingPoint = [self middlePointForTwoTouches: touches];
       } else {
         startingPoint = nil;
@@ -138,14 +138,14 @@ static CGFloat indicatorRadius = 20.0;
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    if (self.triangle) {
-        HKPoint *aPoint = [self.triangle.points objectAtIndex:0];
+    if (self.shape) {
+        HKPoint *aPoint = [self.shape.points objectAtIndex:0];
         
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         CGContextBeginPath(ctx);
         CGContextMoveToPoint   (ctx, aPoint.x, aPoint.y);  // top left
-        for (int i = 1; i < [self.triangle.points count]; i++) {
-            aPoint = [self.triangle.points objectAtIndex:i];
+        for (int i = 1; i < [self.shape.points count]; i++) {
+            aPoint = [self.shape.points objectAtIndex:i];
             CGContextAddLineToPoint(ctx, aPoint.x, aPoint.y); 
         }
         CGContextClosePath(ctx);
@@ -155,7 +155,7 @@ static CGFloat indicatorRadius = 20.0;
       
       if (vertex > -1) {
         CGContextSetRGBFillColor(ctx, 0, 0, 1, 1);
-        HKPoint *point = [[triangle points] objectAtIndex: vertex];
+        HKPoint *point = [[shape points] objectAtIndex: vertex];
         CGRect rect = CGRectMake(point.x - indicatorRadius, point.y - indicatorRadius,
                                   2 * indicatorRadius, 2 * indicatorRadius);
         CGContextFillEllipseInRect(ctx, rect);

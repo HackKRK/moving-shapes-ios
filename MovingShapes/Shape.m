@@ -1,15 +1,15 @@
 //
-//  Triangle.m
+//  Shape.m
 //  MovingShapes
 //
 //  Created by Karol Mazur on 3/22/12.
 //  Copyright (c) 2012 mazur.me. All rights reserved.
 //
 
-#import "Triangle.h"
+#import "Shape.h"
 #import "HKPoint.h"
 
-@implementation Triangle
+@implementation Shape
 
 @synthesize points = _points;
 

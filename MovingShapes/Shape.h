@@ -1,5 +1,5 @@
 //
-//  Triangle.h
+//  Shape.h
 //  MovingShapes
 //
 //  Created by Karol Mazur on 3/22/12.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HKPoint.h"
 
-@interface Triangle : NSObject
+@interface Shape : NSObject
 
 - (id)initWithPoints:(NSArray *)points;
 - (void) updatePoints: (NSArray *) points;
