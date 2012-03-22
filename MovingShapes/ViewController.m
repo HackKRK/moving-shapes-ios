@@ -18,8 +18,16 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)shapeViewDidTouchWithOnePoint:(HKPoint *)point {
+  NSLog(@"1 point: %@", point);
+}
+
+- (void)shapeViewDidTouchWithTwoPoints:(NSArray *)points {
+  NSLog(@"2 points: %@", points);
+}
+
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points {
-    NSLog(@"points %@", points);
+    NSLog(@"3 points: %@", points);
 }
 
 #pragma mark - View lifecycle

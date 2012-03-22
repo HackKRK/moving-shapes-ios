@@ -11,6 +11,9 @@
 
 @protocol ShapeViewDelegate <NSObject>
 
+@optional
+- (void)shapeViewDidTouchWithOnePoint:(HKPoint*) point;
+- (void)shapeViewDidTouchWithTwoPoints:(NSArray *)points;
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points;
 
 @end

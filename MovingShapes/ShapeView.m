@@ -32,28 +32,24 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSSet *allTouches = [event allTouches];
     NSMutableArray *points = [NSMutableArray arrayWithCapacity: allTouches.count];
-    if (allTouches.count == 3){
-        [allTouches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-            UITouch *touch = (UITouch *) obj;
-            HKPoint *point = [[HKPoint alloc] initWithCGPoint: [touch locationInView:self]];
-            [points addObject: point];
-        }];
-        
-        [delegate shapeViewDidTouchWithThreePoints: points];
-    }
-//    [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-//        // Get a single touch and it's location
-//        UITouch *touch = obj;
-//        CGPoint touchPoint = [touch locationInView:self.view];
-//        
-//        // Draw a red circle where the touch occurred
-//        UIView *touchView = [[UIView alloc] init];
-//        [touchView setBackgroundColor:[UIColor redColor]];
-//        touchView.frame = CGRectMake(touchPoint.x, touchPoint.y, 30, 30);
-//        touchView.layer.cornerRadius = 15;
-//        [self.view addSubview:touchView];
-//        [touchView release];
-//    }];
+
+    [allTouches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+      UITouch *touch = (UITouch *) obj;
+      HKPoint *point = [[HKPoint alloc] initWithCGPoint: [touch locationInView:self]];
+      [points addObject: point];
+    }];
+
+  switch (allTouches.count) {
+    case 1: 
+      [delegate shapeViewDidTouchWithOnePoint: [points objectAtIndex: 0]];
+      break;
+    case 2: 
+      [delegate shapeViewDidTouchWithTwoPoints: points];
+      break;
+    case 3: 
+      [delegate shapeViewDidTouchWithThreePoints: points];
+      break;
+  }
 }
 
 /*
