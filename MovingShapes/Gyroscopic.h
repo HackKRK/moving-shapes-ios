@@ -17,10 +17,12 @@
 
 @interface Gyroscopic : NSObject
 
-@property (assign, nonatomic) id delegate;
+@property (assign, nonatomic) id <GyroscopicDelegate> delegate;
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (strong, nonatomic) NSTimer *timer;
 @property float rotation;
+
+- (void)startUpdates;
 
 @end

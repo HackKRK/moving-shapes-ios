@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ShapeView.h"
 #import "Triangle.h"
+#import "Gyroscopic.h"
 
-@interface ViewController : UIViewController <ShapeViewDelegate> {
+@class Gyroscopic;
+
+@interface ViewController : UIViewController <ShapeViewDelegate, GyroscopicDelegate> {
   Triangle *triangle;
 }
+
+@property (strong, nonatomic) Gyroscopic *gyroscopic;
 
 @end

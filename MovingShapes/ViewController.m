@@ -9,8 +9,11 @@
 #import "ViewController.h"
 #import "Triangle.h"
 #import "ShapeView.h"
+#import "Gyroscopic.h"
 
 @implementation ViewController
+
+@synthesize gyroscopic = _gyroscopic;
 
 - (void)didReceiveMemoryWarning
 {
@@ -39,6 +42,12 @@
   [self.view setNeedsDisplay];
 }
 
+- (void)gyroscopicDidUpdateRotation:(float)rotation {
+    NSLog(@"rotation %f", rotation);
+//    self.view.transform = CGAffineTransformMakeRotation(rotation);
+    //		self.image.transform = CGAffineTransformMakeRotation(rotation);
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -48,12 +57,17 @@
     ShapeView *sv = (ShapeView *) self.view;
     sv.delegate = self;
     
+    self.gyroscopic = [[Gyroscopic alloc] init];
+    self.gyroscopic.delegate = self;
+    [self.gyroscopic startUpdates];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.gyroscopic.delegate = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -81,7 +95,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-  return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+  return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 @end

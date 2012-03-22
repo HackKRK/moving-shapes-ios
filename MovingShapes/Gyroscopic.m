@@ -13,6 +13,7 @@
 @synthesize motionManager = _motionManager;
 @synthesize timer = _timer;
 @synthesize rotation = _rotation;
+@synthesize delegate = _delegate;
 
 - (id)init {
     self = [super init];
@@ -22,7 +23,7 @@
     return self;
 }
 
-- (void)startUpdates:(id)sender {
+- (void)startUpdates {
     [self.motionManager startGyroUpdates];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1/30.0
 												 target:self 
@@ -40,6 +41,8 @@
 	if (fabs(rate) > .2) {
 		float direction = rate > 0 ? 1 : -1;
 		self.rotation += direction * M_PI/90.0;
+        
+        [self.delegate gyroscopicDidUpdateRotation:self.rotation];
         
 //		self.image.transform = CGAffineTransformMakeRotation(rotation);
 	}
