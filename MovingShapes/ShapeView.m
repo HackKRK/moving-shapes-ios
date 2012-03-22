@@ -30,10 +30,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSArray *allTouches = [event allTouches];
+    NSSet *allTouches = [event allTouches];
     NSMutableArray *points = [NSMutableArray arrayWithCapacity: allTouches.count];
     if (allTouches.count == 3){
-        [allTouches enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [allTouches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
             UITouch *touch = (UITouch *) obj;
             HKPoint *point = [[HKPoint alloc] initWithCGPoint: [touch locationInView:self]];
             [points addObject: point];

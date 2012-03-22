@@ -13,6 +13,6 @@
 
 - (id)initWithPoints:(NSArray *)points;
 
-@property (nonatomic) NSArray *points;
+@property (strong, nonatomic) NSArray *points;
 
 @end
