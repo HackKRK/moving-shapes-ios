@@ -15,6 +15,9 @@
 		5878DA5B151B9A03003B758C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5878DA5A151B9A03003B758C /* AppDelegate.m */; };
 		5878DA5E151B9A03003B758C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5878DA5D151B9A03003B758C /* ViewController.m */; };
 		5878DA61151B9A03003B758C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5878DA5F151B9A03003B758C /* ViewController.xib */; };
+		9598E398151B9C5E000F1A36 /* Triangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E397151B9C5E000F1A36 /* Triangle.m */; };
+		9598E39D151B9D35000F1A36 /* ShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E39C151B9D35000F1A36 /* ShapeView.m */; };
+		9598E3A1151B9F77000F1A36 /* HKPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E3A0151B9F77000F1A36 /* HKPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,12 @@
 		5878DA5C151B9A03003B758C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5878DA5D151B9A03003B758C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5878DA60151B9A03003B758C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		9598E396151B9C5E000F1A36 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
+		9598E397151B9C5E000F1A36 /* Triangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Triangle.m; sourceTree = "<group>"; };
+		9598E39B151B9D35000F1A36 /* ShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeView.h; sourceTree = "<group>"; };
+		9598E39C151B9D35000F1A36 /* ShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeView.m; sourceTree = "<group>"; };
+		9598E39F151B9F77000F1A36 /* HKPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; path = HKPoint.h; sourceTree = "<group>"; };
+		9598E3A0151B9F77000F1A36 /* HKPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +91,8 @@
 				5878DA5C151B9A03003B758C /* ViewController.h */,
 				5878DA5D151B9A03003B758C /* ViewController.m */,
 				5878DA5F151B9A03003B758C /* ViewController.xib */,
+				9598E39E151B9D39000F1A36 /* Views */,
+				9598E39A151B9CA2000F1A36 /* Model */,
 				5878DA51151B9A03003B758C /* Supporting Files */,
 			);
 			path = MovingShapes;
@@ -96,6 +107,26 @@
 				5878DA58151B9A03003B758C /* MovingShapes-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9598E39A151B9CA2000F1A36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9598E39F151B9F77000F1A36 /* HKPoint.h */,
+				9598E3A0151B9F77000F1A36 /* HKPoint.m */,
+				9598E396151B9C5E000F1A36 /* Triangle.h */,
+				9598E397151B9C5E000F1A36 /* Triangle.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9598E39E151B9D39000F1A36 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9598E39B151B9D35000F1A36 /* ShapeView.h */,
+				9598E39C151B9D35000F1A36 /* ShapeView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +194,9 @@
 				5878DA57151B9A03003B758C /* main.m in Sources */,
 				5878DA5B151B9A03003B758C /* AppDelegate.m in Sources */,
 				5878DA5E151B9A03003B758C /* ViewController.m in Sources */,
+				9598E398151B9C5E000F1A36 /* Triangle.m in Sources */,
+				9598E39D151B9D35000F1A36 /* ShapeView.m in Sources */,
+				9598E3A1151B9F77000F1A36 /* HKPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +308,7 @@
 				5878DA66151B9A03003B758C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

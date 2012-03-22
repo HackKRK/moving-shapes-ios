@@ -19,6 +19,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
   self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
   self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

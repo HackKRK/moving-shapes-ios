@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "Triangle.h"
+#import "ShapeView.h"
 
 @implementation ViewController
 
