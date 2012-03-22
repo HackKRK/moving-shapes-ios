@@ -10,7 +10,7 @@
 
 @implementation ShapeView
 
-@synthesize delegate;
+@synthesize delegate, triangle;
 
 - (id)initWithFrame:(CGRect)frame
 {

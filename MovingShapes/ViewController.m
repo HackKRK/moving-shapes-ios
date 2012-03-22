@@ -28,6 +28,14 @@
 
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points {
     NSLog(@"3 points: %@", points);
+
+  if (triangle) {
+    [triangle updatePoints: points];
+  } else {
+    triangle = [[Triangle alloc] initWithPoints: points];
+    [(ShapeView *) self.view setTriangle: triangle];
+    [self.view setNeedsDisplay];
+  }
 }
 
 #pragma mark - View lifecycle

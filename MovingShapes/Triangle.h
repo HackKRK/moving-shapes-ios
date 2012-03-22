@@ -12,6 +12,7 @@
 @interface Triangle : NSObject
 
 - (id)initWithPoints:(NSArray *)points;
+- (void) updatePoints: (NSArray *) points;
 
 @property (strong, nonatomic) NSArray *points;
 

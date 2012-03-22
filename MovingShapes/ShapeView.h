@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HKPoint.h"
+#import "Triangle.h"
 
 @protocol ShapeViewDelegate <NSObject>
 
@@ -21,5 +22,6 @@
 @interface ShapeView : UIView
 
 @property (assign, nonatomic) id <ShapeViewDelegate> delegate;
+@property (assign, nonatomic) Triangle *triangle;
 
 @end

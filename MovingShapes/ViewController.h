@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ShapeView.h"
+#import "Triangle.h"
 
-@interface ViewController : UIViewController <ShapeViewDelegate>
+@interface ViewController : UIViewController <ShapeViewDelegate> {
+  Triangle *triangle;
+}
 
 @end
