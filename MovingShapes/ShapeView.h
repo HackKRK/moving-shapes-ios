@@ -16,6 +16,7 @@
 - (void)shapeViewDidMoveVertex: (NSInteger) vertex toPoint: (HKPoint *) point;
 - (void)shapeViewDidTouchWithOnePoint:(HKPoint*) point;
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points;
+- (void)shapeViewDidTouchWithFourPoints:(NSArray *)points;
 - (void)shapeViewDidMoveByX: (CGFloat) x y: (CGFloat) y;
 @end
 

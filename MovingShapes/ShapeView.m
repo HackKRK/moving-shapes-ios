@@ -86,6 +86,9 @@ static CGFloat indicatorRadius = 20.0;
     case 3: 
       [delegate shapeViewDidTouchWithThreePoints: points];
       break;
+    case 4: 
+      [delegate shapeViewDidTouchWithFourPoints: points];
+      break;
   }
 }
 

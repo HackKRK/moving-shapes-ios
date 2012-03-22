@@ -44,17 +44,25 @@
   [self.view setNeedsDisplay];
 }
 
+- (void)updateShapeWithPoints:(NSArray*) points {
+    if (shape) {
+        [shape updatePoints: points];
+    } else {
+        shape = [[Shape alloc] initWithPoints: points];
+        [(ShapeView *) self.view setShape: shape];
+    }
+    
+    [self.view setNeedsDisplay];
+}
+
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points {
     NSLog(@"3 points: %@", points);
+    [self updateShapeWithPoints:points];
+}
 
-  if (shape) {
-    [shape updatePoints: points];
-  } else {
-    shape = [[Shape alloc] initWithPoints: points];
-    [(ShapeView *) self.view setShape: shape];
-  }
-
-  [self.view setNeedsDisplay];
+- (void)shapeViewDidTouchWithFourPoints:(NSArray *)points {
+    NSLog(@"4 points: %@", points);
+    [self updateShapeWithPoints:points];
 }
 
 - (void)gyroscopicDidUpdateRotation:(float)rotation {
