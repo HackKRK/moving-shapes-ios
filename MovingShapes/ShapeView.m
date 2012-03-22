@@ -26,6 +26,38 @@ static CGFloat indicatorRadius = 10.0;
   return [[HKPoint alloc] initWithCGPoint: mid];
 }
 
+- (BOOL) point: (HKPoint *) point isBetweenYsOnSegmentFrom: (HKPoint *) pointOnPolygon to: (HKPoint *) trailingPoint {
+  return (pointOnPolygon.y <= point.y && point.y < trailingPoint.y) || 
+  (trailingPoint.y <= point.y && point.y < pointOnPolygon.y);
+}
+
+- (BOOL) rayForPoint: (HKPoint *) point crossesLineSegmentFrom: (HKPoint *) pointOnPolygon to: (HKPoint *) trailingPoint {
+  return (point.x < (trailingPoint.x - pointOnPolygon.x) * (point.y - pointOnPolygon.y) / 
+          (trailingPoint.y - pointOnPolygon.y) + pointOnPolygon.x);
+}
+
+- (BOOL) isPointWithinTriangle: (HKPoint *) point {
+  // shamelessly stolen from http://jakescruggs.blogspot.com/2009/07/point-inside-polygon-in-ruby.html
+  NSArray *points = [triangle points];
+  BOOL contains = false;
+  NSInteger i = -1;
+  NSInteger j = points.count - 1;
+
+  while (++i < points.count) {
+    HKPoint *pointOnPolygon = [points objectAtIndex: i];
+    HKPoint *trailingPoint = [points objectAtIndex: j];
+    
+    if ([self point: point isBetweenYsOnSegmentFrom: pointOnPolygon to: trailingPoint]) {
+      if ([self rayForPoint: point crossesLineSegmentFrom: pointOnPolygon to: trailingPoint]) {
+        contains = !contains;
+      }
+    }
+    j = i;
+  }
+
+  return contains;
+}
+
 - (void) processTouchEvent:(UIEvent *)event {
     NSArray *allTouches = [[event allTouches] allObjects];
     NSMutableArray *points = [NSMutableArray arrayWithCapacity: allTouches.count];
@@ -44,12 +76,13 @@ static CGFloat indicatorRadius = 10.0;
         [delegate shapeViewDidTouchWithOnePoint: [points objectAtIndex: 0]];
       }
       break;
-    case 2: {
-      HKPoint *point = [self middlePointForTwoTouches: allTouches];
-      [delegate shapeViewDidMoveByX: (point.x - startingPoint.x) y: (point.y - startingPoint.y)];
-      startingPoint = point;
+    case 2:
+      if (startingPoint) {
+        HKPoint *point = [self middlePointForTwoTouches: allTouches];
+        [delegate shapeViewDidMoveByX: (point.x - startingPoint.x) y: (point.y - startingPoint.y)];
+        startingPoint = point;
+      }
       break;
-    }
     case 3: 
       [delegate shapeViewDidTouchWithThreePoints: points];
       break;
@@ -72,7 +105,13 @@ static CGFloat indicatorRadius = 10.0;
         }
       }
     } else if (fingers == 2) {
-      startingPoint = [self middlePointForTwoTouches: touches];
+      HKPoint *point1 = [[HKPoint alloc] initWithCGPoint: [[touches objectAtIndex: 0] locationInView: self]];
+      HKPoint *point2 = [[HKPoint alloc] initWithCGPoint: [[touches objectAtIndex: 0] locationInView: self]];
+      if ([self isPointWithinTriangle: point1] && [self isPointWithinTriangle: point2]) {
+        startingPoint = [self middlePointForTwoTouches: touches];
+      } else {
+        startingPoint = nil;
+      }
     }
   }
 }
