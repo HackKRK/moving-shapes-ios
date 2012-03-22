@@ -85,15 +85,26 @@ char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y,
     [self updateShapeWithPoints:points];
 }
 
+// don't look at this code, it's really really bad
 - (void)shapeViewDidTouchWithFourPoints:(NSArray *)points {
     NSLog(@"4 points: %@", points);
-    HKPoint *point1 = [points objectAtIndex: 0];
-    HKPoint *point2 = [points objectAtIndex: 1];
-    HKPoint *point3 = [points objectAtIndex: 2];
-    HKPoint *point4 = [points objectAtIndex: 3];
+
+    for(;;) {
+      HKPoint *point1 = [points objectAtIndex: 0];
+      HKPoint *point2 = [points objectAtIndex: 1];
+      HKPoint *point3 = [points objectAtIndex: 2];
+      HKPoint *point4 = [points objectAtIndex: 3];
   
-    if (get_line_intersection(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y, point4.x, point4.y, 0, 0)) {
-      points = [NSArray arrayWithObjects: point1, point2, point4, point3, nil];
+      if (!get_line_intersection(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y, point4.x, point4.y, 0, 0)
+          && !get_line_intersection(point2.x, point2.y, point3.x, point3.y, point4.x, point4.y, point1.x, point1.y, 0, 0)
+          && !get_line_intersection(point3.x, point3.y, point4.x, point4.y, point1.x, point1.y, point2.x, point2.y, 0, 0)
+          && !get_line_intersection(point4.x, point4.y, point1.x, point1.y, point2.x, point2.y, point3.x, point3.y, 0, 0)) {
+        break;
+      }
+
+      points = [points sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+         return rand() % 2 ? 1 : -1;
+      }];
     }
   
     [self updateShapeWithPoints:points];
