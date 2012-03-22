@@ -18,6 +18,8 @@
 		9598E398151B9C5E000F1A36 /* Triangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E397151B9C5E000F1A36 /* Triangle.m */; };
 		9598E39D151B9D35000F1A36 /* ShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E39C151B9D35000F1A36 /* ShapeView.m */; };
 		9598E3A1151B9F77000F1A36 /* HKPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E3A0151B9F77000F1A36 /* HKPoint.m */; };
+		9598E3B3151BB437000F1A36 /* Gyroscopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 9598E3B2151BB437000F1A36 /* Gyroscopic.m */; };
+		9598E3B6151BB462000F1A36 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9598E3B5151BB461000F1A36 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		9598E39C151B9D35000F1A36 /* ShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeView.m; sourceTree = "<group>"; };
 		9598E39F151B9F77000F1A36 /* HKPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKPoint.h; sourceTree = "<group>"; };
 		9598E3A0151B9F77000F1A36 /* HKPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPoint.m; sourceTree = "<group>"; };
+		9598E3B1151BB437000F1A36 /* Gyroscopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gyroscopic.h; sourceTree = "<group>"; };
+		9598E3B2151BB437000F1A36 /* Gyroscopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gyroscopic.m; sourceTree = "<group>"; };
+		9598E3B5151BB461000F1A36 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9598E3B6151BB462000F1A36 /* CoreMotion.framework in Frameworks */,
 				5878DA4B151B9A03003B758C /* UIKit.framework in Frameworks */,
 				5878DA4D151B9A03003B758C /* Foundation.framework in Frameworks */,
 				5878DA4F151B9A03003B758C /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +82,7 @@
 		5878DA49151B9A03003B758C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9598E3B5151BB461000F1A36 /* CoreMotion.framework */,
 				5878DA4A151B9A03003B758C /* UIKit.framework */,
 				5878DA4C151B9A03003B758C /* Foundation.framework */,
 				5878DA4E151B9A03003B758C /* CoreGraphics.framework */,
@@ -112,6 +119,8 @@
 		9598E39A151B9CA2000F1A36 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9598E3B1151BB437000F1A36 /* Gyroscopic.h */,
+				9598E3B2151BB437000F1A36 /* Gyroscopic.m */,
 				9598E39F151B9F77000F1A36 /* HKPoint.h */,
 				9598E3A0151B9F77000F1A36 /* HKPoint.m */,
 				9598E396151B9C5E000F1A36 /* Triangle.h */,
@@ -197,6 +206,7 @@
 				9598E398151B9C5E000F1A36 /* Triangle.m in Sources */,
 				9598E39D151B9D35000F1A36 /* ShapeView.m in Sources */,
 				9598E3A1151B9F77000F1A36 /* HKPoint.m in Sources */,
+				9598E3B3151BB437000F1A36 /* Gyroscopic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
