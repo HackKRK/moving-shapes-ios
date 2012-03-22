@@ -38,7 +38,7 @@
 		9598E397151B9C5E000F1A36 /* Triangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Triangle.m; sourceTree = "<group>"; };
 		9598E39B151B9D35000F1A36 /* ShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeView.h; sourceTree = "<group>"; };
 		9598E39C151B9D35000F1A36 /* ShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeView.m; sourceTree = "<group>"; };
-		9598E39F151B9F77000F1A36 /* HKPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; path = HKPoint.h; sourceTree = "<group>"; };
+		9598E39F151B9F77000F1A36 /* HKPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKPoint.h; sourceTree = "<group>"; };
 		9598E3A0151B9F77000F1A36 /* HKPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,7 +273,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MovingShapes/MovingShapes-Prefix.pch";
 				INFOPLIST_FILE = "MovingShapes/MovingShapes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -284,7 +286,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MovingShapes/MovingShapes-Prefix.pch";
 				INFOPLIST_FILE = "MovingShapes/MovingShapes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

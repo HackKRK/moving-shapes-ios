@@ -32,7 +32,6 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSArray *allTouches = [event allTouches];
     NSMutableArray *points = [NSMutableArray arrayWithCapacity: allTouches.count];
-
     if (allTouches.count == 3){
         [allTouches enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             UITouch *touch = (UITouch *) obj;

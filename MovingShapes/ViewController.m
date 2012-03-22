@@ -18,11 +18,19 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)shapeViewDidTouchWithThreePoints:(NSArray *)points {
+    NSLog(@"points %@", points);
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    ShapeView *sv = (ShapeView *) self.view;
+    sv.delegate = self;
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

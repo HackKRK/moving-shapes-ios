@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShapeView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ShapeViewDelegate>
 
 @end
