@@ -34,8 +34,9 @@
   } else {
     triangle = [[Triangle alloc] initWithPoints: points];
     [(ShapeView *) self.view setTriangle: triangle];
-    [self.view setNeedsDisplay];
   }
+
+  [self.view setNeedsDisplay];
 }
 
 #pragma mark - View lifecycle

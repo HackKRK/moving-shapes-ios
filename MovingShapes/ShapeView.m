@@ -23,12 +23,6 @@
     return self;
 }
 
-- (void)threeTouched:(UITapGestureRecognizer *)sender {
-//    if (sender.state == UIGestureRecognizerStateEnded) { }
-    
-    
-}
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSSet *allTouches = [event allTouches];
     NSMutableArray *points = [NSMutableArray arrayWithCapacity: allTouches.count];
@@ -52,13 +46,28 @@
   }
 }
 
-/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)drawRect:(CGRect)rect {
+    if (self.triangle) {
+        HKPoint *aPoint = [self.triangle.points objectAtIndex:0];
+        
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextBeginPath(ctx);
+        CGContextMoveToPoint   (ctx, aPoint.x, aPoint.y);  // top left
+        for (int i = 1; i < [self.triangle.points count]; i++) {
+            aPoint = [self.triangle.points objectAtIndex:i];
+            CGContextAddLineToPoint(ctx, aPoint.x, aPoint.y); 
+        }
+        CGContextClosePath(ctx);
+        
+        CGContextSetRGBFillColor(ctx, 1, 0, 0, 1);
+        CGContextFillPath(ctx);
+    }
+    
+
+    
 }
-*/
+
 
 @end
