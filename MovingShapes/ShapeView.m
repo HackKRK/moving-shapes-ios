@@ -23,7 +23,7 @@
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void) processTouchEvent:(UIEvent *)event {
     NSSet *allTouches = [event allTouches];
     NSMutableArray *points = [NSMutableArray arrayWithCapacity: allTouches.count];
 
@@ -44,6 +44,14 @@
       [delegate shapeViewDidTouchWithThreePoints: points];
       break;
   }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self processTouchEvent: event];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self processTouchEvent: event];
 }
 
 // Only override drawRect: if you perform custom drawing.
