@@ -33,8 +33,15 @@
   NSLog(@"1 point: %@", point);
 }
 
-- (void)shapeViewDidTouchWithTwoPoints:(NSArray *)points {
-  NSLog(@"2 points: %@", points);
+- (void)shapeViewDidMoveByX: (CGFloat) x y: (CGFloat) y {
+  NSLog(@"moved by: %f %f", x, y);
+  NSMutableArray *points = [NSMutableArray arrayWithCapacity: [[triangle points] count]];
+  for (HKPoint *point in [triangle points]) {
+    HKPoint *modified = [[HKPoint alloc] initWithCGPoint: CGPointMake(point.x + x, point.y + y)];
+    [points addObject: modified];
+  }
+  [triangle updatePoints: points];
+  [self.view setNeedsDisplay];
 }
 
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points {

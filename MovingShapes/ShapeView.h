@@ -15,14 +15,14 @@
 @optional
 - (void)shapeViewDidMoveVertex: (NSInteger) vertex toPoint: (HKPoint *) point;
 - (void)shapeViewDidTouchWithOnePoint:(HKPoint*) point;
-- (void)shapeViewDidTouchWithTwoPoints:(NSArray *)points;
 - (void)shapeViewDidTouchWithThreePoints:(NSArray *)points;
-
+- (void)shapeViewDidMoveByX: (CGFloat) x y: (CGFloat) y;
 @end
 
 @interface ShapeView : UIView {
   NSInteger fingers;
   NSInteger vertex;
+  HKPoint *startingPoint;
 }
 
 @property (assign, nonatomic) id <ShapeViewDelegate> delegate;
