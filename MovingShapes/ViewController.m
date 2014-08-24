@@ -15,8 +15,8 @@
 CGFloat gyroSpeed = 1.0;
 
 // from http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
-char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y, 
-                           float p2_x, float p2_y, float p3_x, float p3_y, float *i_x, float *i_y)
+static char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y,
+                                  float p2_x, float p2_y, float p3_x, float p3_y, float *i_x, float *i_y)
 {
   float s1_x, s1_y, s2_x, s2_y;
   s1_x = p1_x - p0_x;     s1_y = p1_y - p0_y;
@@ -50,7 +50,7 @@ char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y,
 }
 
 - (void)shapeViewDidMoveVertex: (NSInteger) vertex toPoint: (HKPoint *) point {
-  NSLog(@"moved point %d: %@", vertex, point);
+  NSLog(@"moved point %ld: %@", vertex, point);
   NSMutableArray *points = [NSMutableArray arrayWithArray: [shape points]];
   [points replaceObjectAtIndex: vertex withObject: point];
   [shape updatePoints: points];
