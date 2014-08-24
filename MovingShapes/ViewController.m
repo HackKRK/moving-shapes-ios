@@ -134,8 +134,15 @@ static char get_line_intersection(float p0_x, float p0_y, float p1_x, float p1_y
     self.gyroscopic = [[Gyroscopic alloc] init];
     self.gyroscopic.delegate = self;
     [self.gyroscopic startUpdates];
-    
-	// Do any additional setup after loading the view, typically from a nib.
+
+    // initial shape
+    NSArray *points = @[[[HKPoint alloc] initWithCGPoint: CGPointMake(100, 100)],
+                        [[HKPoint alloc] initWithCGPoint: CGPointMake(250, 100)],
+                        [[HKPoint alloc] initWithCGPoint: CGPointMake(250, 250)],
+                        [[HKPoint alloc] initWithCGPoint: CGPointMake(100, 250)]];
+
+    shape = [[Shape alloc] initWithPoints: points];
+    [(ShapeView *) self.view setShape: shape];
 }
 
 - (void)viewDidUnload
